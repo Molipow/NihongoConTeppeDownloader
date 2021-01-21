@@ -29,4 +29,3 @@ while current <last:
         if(month == 13):
             month = 1
             year += 1
-            current -= 1
