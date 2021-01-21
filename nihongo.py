@@ -16,12 +16,16 @@ def is_downloadable(url):
     return True
     
 
-while current <last:
-    url = f'http://nihongoconteppei.com/wp-content/uploads/{year}/{str(month).zfill(2)}/Beginners-con-Teppei{current}.mp3'
+while current < last:
+    if current == 214:
+        ext = '.m4a'
+    else:
+        ext = '.mp3'
+    url = f'http://nihongoconteppei.com/wp-content/uploads/{year}/{str(month).zfill(2)}/Beginners-con-Teppei{current}{ext}'
     if(is_downloadable(url)):
         print(url, True)
         r = requests.get(url, allow_redirects=True)
-        open(f'Beginners-con-Teppei{current}.mp3', 'wb').write(r.content)
+        open(f'Beginners-con-Teppei{current}{ext}', 'wb').write(r.content)
         current+=1
     else:
         print(url, False)
